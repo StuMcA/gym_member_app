@@ -1,5 +1,5 @@
 from db.run_sql import run_sql
-from models.member import Members
+from models.member import Member
 
 def save(member):
     sql = """
@@ -9,14 +9,12 @@ def save(member):
     values = [member.first_name, member.last_name, member.age, member.membership]
     result = run_sql(sql, values)
 
-    member.id = results[0]['id']
+    member.id = result[0]['id']
 
 def select_all():
     all_members = []
-
     sql = "SELECT * FROM members"
     results = run_sql(sql)
-
     for row in results:
         member = Member(row['first_name'], row['last_name'], row['age'], row['membership'])
         all_members.append(member)

@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
     {% for member in members %}
-    <li>{{member.first_name}} {{member.last_name}}</li>
+    <li>{{member.first_name}} {{member.last_name}} {{member.date_of_birth}}</li>
     {% endfor %}
 </ul>
 {% endblock %}

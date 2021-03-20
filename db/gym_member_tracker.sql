@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS attendance;
-DROP TABLE IF EXISTS classes;
+DROP TABLE IF EXISTS attendees;
 DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS classes;
 
 CREATE TABLE members (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
-    age INT,
+    date_of_birth DATE,
     membership VARCHAR(255)
 );
 

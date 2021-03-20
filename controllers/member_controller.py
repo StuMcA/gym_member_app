@@ -8,6 +8,6 @@ def members():
     all_members = member_repository.select_all()
     return render_template('/members/index.html', title="Members", members=all_members)
 
-@menber_blueprint.route('/members/new')
+@member_blueprint.route('/members/new')
 def new_member():
     return render_template('/members/new.html', title="Add new member")

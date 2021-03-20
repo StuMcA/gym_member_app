@@ -20,3 +20,4 @@ def select_all():
         all_members.append(member)
 
     return all_members
+

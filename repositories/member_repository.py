@@ -23,6 +23,9 @@ def select_all():
 
 def select(id):
     sql = "SELECT * FROM members WHERE id = %s"
-    result = run_sql(sql)
-    member = Member(row['first_name'], row['second_name'], row['date_of_birth'], row['membership'])
+    values = [id]
+
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        member = Member(result['first_name'], result['last_name'], result['date_of_birth'], result['membership'], result['id'])
     return member

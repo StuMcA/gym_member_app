@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
     {% for member in members %}
-    <li>{{member}}</li>
+    <li>{{member.first_name}} {{member.last_name}}</li>
     {% endfor %}
 </ul>
 {% endblock %}

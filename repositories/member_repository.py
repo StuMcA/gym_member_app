@@ -21,3 +21,8 @@ def select_all():
 
     return all_members
 
+def select(id):
+    sql = "SELECT * FROM members WHERE id = %s"
+    result = run_sql(sql)
+    member = Member(row['first_name'], row['second_name'], row['date_of_birth'], row['membership'])
+    return member

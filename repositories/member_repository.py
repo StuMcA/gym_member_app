@@ -29,3 +29,17 @@ def select(id):
     if result is not None:
         member = Member(result['first_name'], result['last_name'], result['date_of_birth'], result['membership'], result['id'])
     return member
+
+def update(member):
+    sql = """
+        UPDATE members
+        SET (first_name, last_name, date_of_birth, membership) = (%s, %s, %s, %s)
+        WITH id = %s
+    """
+    values = (member.first_name, member.last_name, member.date_of_birth, member.membership, member.id)
+    run_sql(sql, values)
+
+def delete(id):
+    sql = "DELETE FROM members WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

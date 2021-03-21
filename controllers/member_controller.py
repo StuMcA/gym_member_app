@@ -46,5 +46,10 @@ def update_member(id):
         request.form['membership'],
         id
     )
-    member_repository.update(member)
+    member_repository.update(updated_member)
     return redirect('/members/<id>')
+
+@member_repository.route('/members/delete', methods = ['POST'])
+def destroy_member(id):
+    member_repository.delete(id)
+    return redirect('/members')

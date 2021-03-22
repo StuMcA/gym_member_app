@@ -3,6 +3,7 @@ from models.gym_class import GymClass
 from models.member import Member
 import repositories.instructor_repository as instructor_repository
 import repositories.location_repository as location_repository
+import repositories.attendance_repository as attendance_repository
 
 # CRUD operations
 
@@ -74,6 +75,7 @@ def delete_all():
     run_sql(sql)
 
 def delete(id):
+    attendance_repository.delete_by_class_id(id)
     sql = "DELETE FROM gym_classes WHERE id = %s"
     values = [id]
     run_sql(sql, values)

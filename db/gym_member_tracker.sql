@@ -20,7 +20,7 @@ CREATE TABLE locations (
     id SERIAL PRIMARY KEY,
     room_name VARCHAR(255),
     capacity INT
-)
+);
 
 CREATE TABLE gym_classes (
     id SERIAL PRIMARY KEY,
@@ -29,8 +29,7 @@ CREATE TABLE gym_classes (
     class_time VARCHAR(255),
     instructor_id INT REFERENCES instructors(id),
     duration INT,
-    class_location VARCHAR(255),
-    capacity INT
+    location_id INT REFERENCES locations(id)
 );
 
 CREATE TABLE attendees (

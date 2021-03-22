@@ -39,3 +39,7 @@ def select(id):
         attendance = Attendance(gym_class, member, id)
 
     return attendance
+
+def delete_all():
+    sql = "DELETE FROM attendees"
+    run_sql(sql)

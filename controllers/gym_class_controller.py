@@ -3,6 +3,7 @@ import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
 from models.gym_class import GymClass
 from models.member import Member
+from models.instructor import Instructor
 
 gym_class_blueprint = Blueprint("gym_class", __name__)
 
@@ -33,6 +34,7 @@ def edit_class(id):
 
 @gym_class_blueprint.route('/classes/<id>', methods=['POST'])
 def update_class(id):
+    instructor = 
     updated_class = GymClass(
         request.form['class_type'],
         request.form['instructor'],

@@ -16,3 +16,13 @@ def select_all():
         instructor = Instructor(row["full_name"])
         instructors.append(instructor)
     return instructors
+
+def select(id):
+    sql = "SELECT * FROM instructors WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    
+    if result is not None:
+        instructor_found = Instructor(result["full_name"])
+
+    return instructor_found

@@ -29,4 +29,6 @@ def select(id):
     return location
 
 def delete(id):
-    sql = ""
+    sql = "DELETE FROM locations WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

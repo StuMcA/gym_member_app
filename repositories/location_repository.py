@@ -32,3 +32,7 @@ def delete(id):
     sql = "DELETE FROM locations WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def delete_all():
+    sql = "DELETE FROM locations"
+    run_sql(sql)

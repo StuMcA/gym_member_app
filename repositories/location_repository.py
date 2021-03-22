@@ -18,3 +18,15 @@ def select_all():
         locations.append(location)
 
     return locations
+
+def select(id):
+    sql = "SELECT * FROM locations WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        location = Location(result["room_name"], result["capacity"], id)
+    return location
+
+def delete(id):
+    sql = ""

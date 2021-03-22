@@ -41,6 +41,19 @@ def new_class():
     return render_template('/classes/new.html', title="Add new class")
 
 # Create class
-
+@gym_class_blueprint.route('/classes/create', methods = ['POST'])
+def create_class():
+    new_gym_class = GymClass(
+         request.form['class_type'],
+        request.form['instructor'],
+        request.form['date'],
+        request.form['time'],
+        request.form['duration'],
+        request.form['location'],
+        request.form['capacity']
+    )
+    gym_class_repository.save(new_gym_class)
+    return redirect('/classes')
+    
 
 # Delete class

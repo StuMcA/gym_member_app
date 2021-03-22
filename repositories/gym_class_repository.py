@@ -28,4 +28,9 @@ def select_all():
 def select(id):
     sql = "SELECT * FROM gym_classes WHERE id = %s"
     values = [id]
-    
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        class_found = GymClass(result["class_type"], result["class_date"], result["class_time"], result["instructor"], result["duration"], result["class_locatin"], result["capacity"], result["id"])
+
+    return class_found

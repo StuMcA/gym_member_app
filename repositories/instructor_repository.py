@@ -5,7 +5,8 @@ def save(instructor):
     sql = "INSERT INTO instructors (full_name) VALUES (%s) RETURNING id"
     values = [instructor.name]
 
-    run_sql(sql, values)
+    result = run_sql(sql, values)
+    instructor.id = result[0]["id"]
 
 def select_all():
     instructors = []
@@ -13,16 +14,15 @@ def select_all():
     results = run_sql(sql)
     
     for row in results:
-        instructor = Instructor(row["full_name"])
+        instructor = Instructor(row["full_name"], row["id"])
         instructors.append(instructor)
     return instructors
 
 def select(id):
     sql = "SELECT * FROM instructors WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)[0]
-    
+    result = run_sql(sql, values)
     if result is not None:
-        instructor_found = Instructor(result["full_name"])
+        instructor_found = Instructor(result[0]["full_name"], result[0]["id"])
 
     return instructor_found

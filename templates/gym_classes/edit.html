@@ -8,7 +8,9 @@
     <input type="text" id="class_type" name="class_type" value={{gym_class.class_type}}>
     <label for="instructor">Instructor: </label>
     <select name="instructor" id="instructor">
-    
+        {% for instructor in instructors %}
+            <option value="{{instructor.id}}">{{instructor.name}}</option>
+        {% endfor %}
     </select>
     <label for="date">Date: </label>
     <input type="date" name="date" id="date" value={{gym_class.date}}>
@@ -18,7 +20,8 @@
     <input type="number" name="duration" id="duration" value={{gym_class.duration}} min="0">
     <label for="location">Location: </label>
     <select name="location" id="location">
-
+        <option value="Weights Studio">Weights Studio</option>
+        <option value="Yoga studio">Yoga Studio</option>
     </select>
     <label for="capacity">Capacity: </label>
     <input type="number" id="capacity" name="capacity" value={{gym_class.capacity}} min="0">

@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Class details</h1>
     <p>{{gym_class.class_type}}</p>
-    <p>{{gym_class.instructor.full_name}}</p>
+    <p>{{gym_class.instructor.name}}</p>
     <p>{{gym_class.date}}</p>
     <p>{{gym_class.time}}</p>
     <p>{{gym_class.duration}}</p>
@@ -16,15 +16,16 @@
         <input type="submit" value="Delete class">
     </form>
 
-    <form action="/classes/{{gym_class.id}}/addmember" method="POST">
+    <form action="/attendances/new" method="POST">
+        <input type="hidden" name="class_id" value="{{gym_class.id}}">
         <label for="member">Add member to class: </label>
-        <select name="id" id="member">
+        <select name="member_id" id="member">
             <option value="" selected="true" disabled="disabled">Select a member</option>
             {% for member in members %}
             <option value="{{member.id}}">#{{member.id}} - {{member.first_name}} {{member.last_name}}</option>
             {% endfor %}
         </select>
-        <input type="submit" value="add">
+        <input type="submit" value="Add">
     </form>
 
     <h2>Members booked in</h2>

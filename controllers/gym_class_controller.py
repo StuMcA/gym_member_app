@@ -1,6 +1,7 @@
 from flask import Flask, redirect, request, render_template, Blueprint
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
+import repositories.instructor_repository as instructor_repository
 from models.gym_class import GymClass
 from models.member import Member
 from models.instructor import Instructor
@@ -17,7 +18,12 @@ def gym_class(id):
     gym_class = gym_class_repository.select(id)
     members = member_repository.select_all()
     attendees = gym_class_repository.members(gym_class)
-    return render_template('/gym_classes/show.html', title=f"{gym_class.class_type} with {gym_class.instructor}", gym_class=gym_class, members=members, attendees=attendees)
+    return render_template('/gym_classes/show.html', 
+        title=f"{gym_class.class_type} with {gym_class.instructor.name}", 
+        gym_class=gym_class, 
+        members=members, 
+        attendees=attendees, 
+    )
 
 @gym_class_blueprint.route('/classes/<id>/addmember', methods=["POST"])
 def add_member(id):
@@ -30,34 +36,38 @@ def add_member(id):
 @gym_class_blueprint.route('/classes/<id>/edit')
 def edit_class(id):
     gym_class = gym_class_repository.select(id)
-    return render_template('/gym_classes/edit.html', title="Edit class", gym_class=gym_class)
+    all_instructors = instructor_repository.select_all()
+    return render_template('/gym_classes/edit.html', title="Edit class", gym_class=gym_class, instructors=all_instructors)
 
 @gym_class_blueprint.route('/classes/<id>', methods=['POST'])
 def update_class(id):
-    instructor = 
+    instructor = instructor_repository.select(request.form['instructor'])
     updated_class = GymClass(
         request.form['class_type'],
-        request.form['instructor'],
+        instructor,
         request.form['date'],
         request.form['time'],
         request.form['duration'],
         request.form['location'],
-        request.form['capacity']
+        request.form['capacity'],
+        id
     )
     gym_class_repository.update(updated_class)
-    return redirect(f'classes/{id}')
+    return redirect(f'/classes/{id}')
 
 # New class
 @gym_class_blueprint.route('/classes/new')
 def new_class():
-    return render_template('/gym_classes/new.html', title="Add new class")
+    all_instructors = instructor_repository.select_all()
+    return render_template('/gym_classes/new.html', title="Add new class", instructors=all_instructors)
 
 # Create class
 @gym_class_blueprint.route('/classes/create', methods = ['POST'])
 def create_class():
+    instructor = instructor_repository.select(request.form['instructor'])
     new_gym_class = GymClass(
         request.form['class_type'],
-        request.form['instructor'],
+        instructor,
         request.form['date'],
         request.form['time'],
         request.form['duration'],

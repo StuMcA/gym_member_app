@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    <h1>Class details</h1>
     <p>{{gym_class.class_type}}</p>
     <p>{{gym_class.instructor}}</p>
     <p>{{gym_class.date}}</p>
@@ -15,5 +15,12 @@
     <form action="/classes/{{gym_class.id}}/delete" method="POST">
         <input type="submit" value="Delete class">
     </form>
+
+    <h2>Members booked in</h2>
+    {% for member in attendees %}
+        <p>{{member.first_name}}</p>
+        <p>{{member.last_name}}</p>
+        <p>{{member.id}}</p>
+    {% endfor %}
 
 {% endblock %}

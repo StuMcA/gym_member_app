@@ -12,7 +12,8 @@ def classes():
 @gym_class_blueprint.route('/classes/<id>')
 def gym_class(id):
     gym_class = gym_class_repository.select(id)
-    return render_template('/gym_classes/show.html', title=f"{gym_class.class_type} with {gym_class.instructor}", gym_class=gym_class)
+    attendees = gym_class_repository.members(gym_class)
+    return render_template('/gym_classes/show.html', title=f"{gym_class.class_type} with {gym_class.instructor}", gym_class=gym_class, attendees=attendees)
 
 # Edit classes
 @gym_class_blueprint.route('/classes/<id>/edit')

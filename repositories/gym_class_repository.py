@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.gym_class import GymClass
+from models.member import Member
 
 def save(gym_class):
     sql = """
@@ -54,3 +55,15 @@ def delete(id):
     sql = "DELETE FROM gym_classes WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def members(gym_class):
+    attendees = []
+    sql = "SELECT members.* FROM members INNER JOIN attendees ON attendees.member_id = members.id WHERE class_id = %s"
+    values = [gym_class.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        attendee = Member(row["first_name"], row["last_name"], row["date_of_birth"], row["membership"], row["id"])
+        attendees.append(attendee)
+        
+    return attendees

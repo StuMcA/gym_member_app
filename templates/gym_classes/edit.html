@@ -2,19 +2,27 @@
 
 {% block content %}
 <h1>Update class details:</h1>
-<form action="/members/{{member.id}}" method="POST">
-    <label for="first_name">First name:</label>
-    <input type="text" name="first_name" id="first_name" value={{member.first_name}}>
-    <label for="last_name">Last name:</label>
-    <input type="text" name="last_name" id="last_name" value={{member.last_name}}>
-    <label for="date_of_birth">DOB:</label>
-    <input type="date" name="date_of_birth" id="date_of_birth" value={{member.date_of_birth}}>
-    <label for="membership">Membership:</label>
-    <select name="membership" id="membership">
-        <option value="peak">Peak</option>
-        <option value="off peak">Off peak</option>
+
+<form action="/classes/{{gym_class.id}}" method="POST">
+    <label for="class_type">What's the class: </label>
+    <input type="text" id="class_type" name="class_type" value={{gym_class.class_type}}>
+    <label for="instructor">Instructor: </label>
+    <select name="instructor" id="instructor">
+    
     </select>
-    <input type="submit" value="Save changes">
+    <label for="date">Date: </label>
+    <input type="date" name="date" id="date" value={{gym_class.date}}>
+    <label for="time">Time: </label>
+    <input type="time" name="time" id="time" value={{gym_class.time}}>
+    <label for="duration">Duration: </label>
+    <input type="number" name="duration" id="duration" value={{gym_class.duration}} min="0">
+    <label for="location">Location: </label>
+    <select name="location" id="location">
+
+    </select>
+    <label for="capacity">Capacity: </label>
+    <input type="number" id="capacity" name="capacity" value={{gym_class.capacity}} min="0">
+    <input type="submit">
 </form>
 
 {% endblock %}

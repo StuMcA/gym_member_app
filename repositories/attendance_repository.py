@@ -13,8 +13,6 @@ def save(attendance):
     """
     values = [attendance.gym_class.id, attendance.member.id]
     result = run_sql(sql, values)
-    # import pdb
-    # pdb.set_trace()
     attendance.id = result[0]["id"]
 
 def select_all():

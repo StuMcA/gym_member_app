@@ -25,14 +25,6 @@ def gym_class(id):
         attendees=attendees, 
     )
 
-@gym_class_blueprint.route('/classes/<id>/addmember', methods=["POST"])
-def add_member(id):
-    gym_class = gym_class_repository.select(id)
-    attendee = member_repository.select(request.form["id"])
-    gym_class_repository.add_member(gym_class, attendee)
-
-    return redirect(f'/classes/{id}')
-
 @gym_class_blueprint.route('/classes/<id>/edit')
 def edit_class(id):
     gym_class = gym_class_repository.select(id)

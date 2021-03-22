@@ -36,6 +36,11 @@ def update_class(id):
     return redirect(f'classes/{id}')
 
 # New class
+@gym_class_blueprint.route('/classes/new')
+def new_class():
+    return render_template('/classes/new.html', title="Add new class")
+
+# Create class
 
 
 # Delete class

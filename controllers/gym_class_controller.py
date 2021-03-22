@@ -18,13 +18,13 @@ def gym_class(id):
     attendees = gym_class_repository.members(gym_class)
     return render_template('/gym_classes/show.html', title=f"{gym_class.class_type} with {gym_class.instructor}", gym_class=gym_class, members=members, attendees=attendees)
 
-@gym_class_blueprint.route('/classes/<id>/addmember')
+@gym_class_blueprint.route('/classes/<id>/addmember', methods=["POST"])
 def add_member(id):
     gym_class = gym_class_repository.select(id)
     attendee = member_repository.select(request.form["id"])
     gym_class_repository.add_member(gym_class, attendee)
 
-    return redirect('/classes/<id>')
+    return redirect(f'/classes/{id}')
 
 @gym_class_blueprint.route('/classes/<id>/edit')
 def edit_class(id):
@@ -54,7 +54,7 @@ def new_class():
 @gym_class_blueprint.route('/classes/create', methods = ['POST'])
 def create_class():
     new_gym_class = GymClass(
-         request.form['class_type'],
+        request.form['class_type'],
         request.form['instructor'],
         request.form['date'],
         request.form['time'],

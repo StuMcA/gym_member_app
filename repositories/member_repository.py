@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.member import Member
+import repositories.attendance_repository as attendance_repository
 
 def save(member):
     sql = """
@@ -40,6 +41,7 @@ def update(member):
     run_sql(sql, values)
 
 def delete(id):
+    attendance_repository.delete_by_member_id(id)
     sql = "DELETE FROM members WHERE id = %s"
     values = [id]
     run_sql(sql, values)

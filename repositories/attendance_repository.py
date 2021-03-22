@@ -48,3 +48,8 @@ def delete_by_class_id(id):
     sql = "DELETE FROM attendees WHERE class_id = %s"
     values = [id]
     run_sql(sql, values)
+
+def delete_by_member_id(id):
+    sql = "DELETE FROM attendees WHERE member_id = %s"
+    values = [id]
+    run_sql(sql, values)

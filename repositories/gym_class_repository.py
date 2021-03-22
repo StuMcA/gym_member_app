@@ -45,3 +45,7 @@ def update(gym_class):
     values = [gym_class.class_type, gym_class.date, gym_class.time, gym_class.instructor, gym_class.duration, gym_class.location, gym_class.capacity]
     result = run_sql(sql, values)
     return result
+
+def delete_all():
+    sql = "DELETE FROM gym_classes"
+    run_sql(sql)

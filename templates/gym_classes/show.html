@@ -16,6 +16,11 @@
         <input type="submit" value="Delete class">
     </form>
 
+    <form action="/members/{{gym_class.id}}/addmember">
+        <label for="member">Add member to class: </label>
+        <select name="id" id="member"></select>
+    </form>
+
     <h2>Members booked in</h2>
     {% for member in attendees %}
         <p>{{member.first_name}}</p>

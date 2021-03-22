@@ -2,6 +2,8 @@ from db.run_sql import run_sql
 from models.gym_class import GymClass
 from models.member import Member
 
+# CRUD operations
+
 def save(gym_class):
     sql = """
         INSERT INTO gym_classes
@@ -56,6 +58,14 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+# Member interactions
+
+def add_member(gym_class, member):
+    sql = "INSERT INTO attendees (class_id, member_id) VALUES (%s, %s)"
+    values = [gym_class.id, member.id]
+    run_sql(sql, values)
+    
+
 def members(gym_class):
     attendees = []
     sql = "SELECT members.* FROM members INNER JOIN attendees ON attendees.member_id = members.id WHERE class_id = %s"
@@ -65,5 +75,5 @@ def members(gym_class):
     for row in results:
         attendee = Member(row["first_name"], row["last_name"], row["date_of_birth"], row["membership"], row["id"])
         attendees.append(attendee)
-        
+
     return attendees

@@ -1,9 +1,11 @@
 import repositories.member_repository as member_repository
 import repositories.gym_class_repository as gym_class_repository
 import repositories.instructor_repository as instructor_repository
+import repositories.attendance_repository as attendance_repository
 from models.member import Member
 from models.gym_class import GymClass
 from models.instructor import Instructor
+from models.attendance import Attendance
 
 member_repository.delete_all()
 
@@ -25,4 +27,11 @@ class_2 = GymClass("Yoga", instructor_2, "2021-03-23", "13:30", 60, "Yoga Studio
 gym_class_repository.save(class_1)
 gym_class_repository.save(class_2)
 
+attendance_1 = Attendance(class_1, member_1)
+attendance_2 = Attendance(class_1, member_2)
+attendance_3 = Attendance(class_2, member_1)
+
+attendance_repository.save(attendance_1)
+attendance_repository.save(attendance_2)
+attendance_repository.save(attendance_3)
 

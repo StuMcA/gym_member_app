@@ -16,6 +16,12 @@ CREATE TABLE instructors (
     full_name VARCHAR(255)
 );
 
+CREATE TABLE locations (
+    id SERIAL PRIMARY KEY,
+    room_name VARCHAR(255),
+    capacity INT
+)
+
 CREATE TABLE gym_classes (
     id SERIAL PRIMARY KEY,
     class_type VARCHAR(255),

@@ -55,5 +55,8 @@ def create_class():
     gym_class_repository.save(new_gym_class)
     return redirect('/classes')
     
-
 # Delete class
+@gym_class_blueprint.route('/classes/delete', methods=['POST'])
+def destroy_class(id):
+    gym_class_repository.delete(id)
+    return redirect('/classes')

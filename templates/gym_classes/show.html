@@ -2,12 +2,18 @@
 
 {% block content %}
 
-<p>{{gym_class.class_type}}</p>
-<p>{{gym_class.instructor}}</p>
-<p>{{gym_class.date}}</p>
-<p>{{gym_class.time}}</p>
-<p>{{gym_class.duration}}</p>
-<p>{{gym_class.location}}</p>
-<p>{{gym_class.capacity}}</p>
+    <p>{{gym_class.class_type}}</p>
+    <p>{{gym_class.instructor}}</p>
+    <p>{{gym_class.date}}</p>
+    <p>{{gym_class.time}}</p>
+    <p>{{gym_class.duration}}</p>
+    <p>{{gym_class.location}}</p>
+    <p>{{gym_class.capacity}}</p>
+
+    <a href="/classes/{{gym_class.id}}/edit">Edit class details </a>
+
+    <form action="/classes/{{gym_class.id}}/delete" method="POST">
+        <input type="submit" value="Delete class">
+    </form>
 
 {% endblock %}

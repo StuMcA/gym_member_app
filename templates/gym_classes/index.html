@@ -3,29 +3,31 @@
 {% block content %}
 <ul>
     {% for class in classes %}
-    <li>
-        <p>
-            {{class.class_type}}
-        </p>
-        <p>
-            {{class.date}}
-        </p>
-        <p>
-            {{class.time}}
-        </p>
-        <p>
-            {{class.instructor}}
-        </p>
-        <p>
-            {{class.duration}}
-        </p>
-        <p>
-            {{class.location}}
-        </p>
-        <p>
-            {{class.capacity}}
-        </p>
-    </li>
+    <a href="/classes/{{class.id}}">
+        <li>
+            <p>
+                {{class.class_type}}
+            </p>
+            <p>
+                {{class.date}}
+            </p>
+            <p>
+                {{class.time}}
+            </p>
+            <p>
+                {{class.instructor}}
+            </p>
+            <p>
+                {{class.duration}}
+            </p>
+            <p>
+                {{class.location}}
+            </p>
+            <p>
+                {{class.capacity}}
+            </p>
+        </li>
+    </a>
     {% endfor %}
 </ul>
 {% endblock %}

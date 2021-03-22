@@ -9,11 +9,11 @@ import repositories.location_repository as location_repository
 def save(gym_class):
     sql = """
         INSERT INTO gym_classes
-        (class_type, class_date, class_time, instructor_id, duration, location_id, capacity) 
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        (class_type, class_date, class_time, instructor_id, duration, location_id) 
+        VALUES (%s, %s, %s, %s, %s, %s)
         RETURNING id
     """
-    values = [gym_class.class_type, gym_class.date, gym_class.time, gym_class.instructor.id, gym_class.duration, gym_class.location.id, gym_class.capacity]
+    values = [gym_class.class_type, gym_class.date, gym_class.time, gym_class.instructor.id, gym_class.duration, gym_class.location.id]
     result = run_sql(sql, values)
 
     gym_class.id = result[0]['id']
@@ -26,7 +26,7 @@ def select_all():
     
     for row in results:
         instructor = instructor_repository.select(row["instructor_id"])
-        location = location_repository.select(request.form["location"])
+        location = location_repository.select(row["location_id"])
         gym_class = GymClass(row["class_type"], 
             instructor, 
             row["class_date"], 
@@ -47,7 +47,7 @@ def select(id):
 
     if result is not None:
         instructor = instructor_repository.select(result["instructor_id"])
-        location = location_repository.select(request.form["location"])
+        location = location_repository.select(result["location_id"])
         class_found = GymClass(result["class_type"], 
         instructor, 
         result["class_date"], 
@@ -63,11 +63,11 @@ def select(id):
 def update(gym_class):
     sql = """
         UPDATE gym_classes
-        SET (class_type, class_date, class_time, instructor_id, duration, location_id, capacity) = (%s, %s, %s, %s, %s, %s, %s)
+        SET (class_type, class_date, class_time, instructor_id, duration, location_id) = (%s, %s, %s, %s, %s, %s)
         WHERE id = %s
     
     """
-    values = [gym_class.class_type, gym_class.date, gym_class.time, gym_class.instructor.id, gym_class.duration, gym_class.location.id, gym_class.capacity, gym_class.id]
+    values = [gym_class.class_type, gym_class.date, gym_class.time, gym_class.instructor.id, gym_class.duration, gym_class.location.id, gym_class.id]
     run_sql(sql, values)
 
 

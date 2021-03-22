@@ -2,15 +2,18 @@ import repositories.member_repository as member_repository
 import repositories.gym_class_repository as gym_class_repository
 import repositories.instructor_repository as instructor_repository
 import repositories.attendance_repository as attendance_repository
+import repositories.location_repository as location_repository
 from models.member import Member
 from models.gym_class import GymClass
 from models.instructor import Instructor
 from models.attendance import Attendance
 from models.location import Location
 
+attendance_repository.delete_all()
 member_repository.delete_all()
 gym_class_repository.delete_all()
-attendance_repository.delete_all()
+location_repository.delete_all()
+
 
 member_1 = Member("Stuart", "McAra", '1989-03-26', "Peak")
 member_2 = Member("Michael", "Scott", '1965-12-03', "Off-peak")
@@ -26,6 +29,9 @@ instructor_repository.save(instructor_2)
 
 location_1 = Location("Weights Studio", 15)
 location_2 = Location("Yoga Studio", 10)
+
+location_repository.save(location_1)
+location_repository.save(location_2)
 
 class_1 = GymClass("Weights", instructor_1, "2021-03-23", "14:00", 90, location_1)
 class_2 = GymClass("Yoga", instructor_2, "2021-03-23", "13:30", 60, location_2)

@@ -2,8 +2,8 @@ from db.run_sql import run_sql
 from models.location import Location
 
 def save(location):
-    sql = "INSERT INTO locations (room_name, capacity) VALUES (%s, %s)"
-    values = [location.room_name, location.capacity]
+    sql = "INSERT INTO locations (room_name, capacity) VALUES (%s, %s) RETURNING id"
+    values = [location.name, location.capacity]
 
     result = run_sql(sql, values)
     location.id = result[0]["id"]

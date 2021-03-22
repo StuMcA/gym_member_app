@@ -15,6 +15,7 @@ CREATE TABLE gym_classes (
     class_type VARCHAR(255),
     class_date VARCHAR(255),
     class_time VARCHAR(255),
+    instructor VARCHAR(255),
     duration INT,
     class_location VARCHAR(255),
     capacity INT

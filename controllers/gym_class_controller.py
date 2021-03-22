@@ -2,6 +2,7 @@ from flask import Flask, redirect, request, render_template, Blueprint
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
 import repositories.instructor_repository as instructor_repository
+import repositories.location_repository as location_repository
 from models.gym_class import GymClass
 from models.member import Member
 from models.instructor import Instructor
@@ -29,18 +30,20 @@ def gym_class(id):
 def edit_class(id):
     gym_class = gym_class_repository.select(id)
     all_instructors = instructor_repository.select_all()
-    return render_template('/gym_classes/edit.html', title="Edit class", gym_class=gym_class, instructors=all_instructors)
+    all_locations = location_repository.select_all()
+    return render_template('/gym_classes/edit.html', title="Edit class", gym_class=gym_class, instructors=all_instructors, locations=all_locations)
 
 @gym_class_blueprint.route('/classes/<id>', methods=['POST'])
 def update_class(id):
     instructor = instructor_repository.select(request.form['instructor'])
+    location = location_repository.select(request.form["location"])
     updated_class = GymClass(
         request.form['class_type'],
         instructor,
         request.form['date'],
         request.form['time'],
         request.form['duration'],
-        request.form['location'],
+        location,
         request.form['capacity'],
         id
     )
@@ -51,19 +54,21 @@ def update_class(id):
 @gym_class_blueprint.route('/classes/new')
 def new_class():
     all_instructors = instructor_repository.select_all()
-    return render_template('/gym_classes/new.html', title="Add new class", instructors=all_instructors)
+    all_locations = location_repository.select_all()
+    return render_template('/gym_classes/new.html', title="Add new class", instructors=all_instructors, locations=all_locations)
 
 # Create class
 @gym_class_blueprint.route('/classes/create', methods = ['POST'])
 def create_class():
     instructor = instructor_repository.select(request.form['instructor'])
+    location = location_repository.select(request.form["location"])
     new_gym_class = GymClass(
         request.form['class_type'],
         instructor,
         request.form['date'],
         request.form['time'],
         request.form['duration'],
-        request.form['location'],
+        location,
         request.form['capacity']
     )
     gym_class_repository.save(new_gym_class)

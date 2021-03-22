@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Update member details:</h1>
+<h1>Update class details:</h1>
 <form action="/members/{{member.id}}" method="POST">
     <label for="first_name">First name:</label>
     <input type="text" name="first_name" id="first_name" value={{member.first_name}}>

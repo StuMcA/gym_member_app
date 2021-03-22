@@ -44,7 +44,6 @@ def update_class(id):
         request.form['time'],
         request.form['duration'],
         location,
-        request.form['capacity'],
         id
     )
     gym_class_repository.update(updated_class)
@@ -68,8 +67,7 @@ def create_class():
         request.form['date'],
         request.form['time'],
         request.form['duration'],
-        location,
-        request.form['capacity']
+        location
     )
     gym_class_repository.save(new_gym_class)
     return redirect('/classes')

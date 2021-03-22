@@ -26,3 +26,7 @@ def select(id):
         instructor_found = Instructor(result[0]["full_name"], result[0]["id"])
 
     return instructor_found
+
+def delete_all():
+    sql = "DELETE FROM instructors"
+    run_sql(sql)

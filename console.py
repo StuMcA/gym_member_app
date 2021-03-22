@@ -12,6 +12,7 @@ from models.location import Location
 attendance_repository.delete_all()
 member_repository.delete_all()
 gym_class_repository.delete_all()
+instructor_repository.delete_all()
 location_repository.delete_all()
 
 

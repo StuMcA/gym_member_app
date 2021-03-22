@@ -33,7 +33,6 @@ def select_all():
             row["class_time"], 
             row["duration"], 
             location, 
-            row["capacity"], 
             row["id"]
         )
         all_classes.append(gym_class)
@@ -54,7 +53,6 @@ def select(id):
         result["class_time"], 
         result["duration"], 
         location, 
-        result["capacity"], 
         result["id"]
     )
 

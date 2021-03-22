@@ -22,6 +22,9 @@ def select_all():
 def select(id):
     sql = "SELECT * FROM locations WHERE id = %s"
     values = [id]
+    # import pdb
+    # pdb.set_trace()
+
     result = run_sql(sql, values)[0]
 
     if result is not None:

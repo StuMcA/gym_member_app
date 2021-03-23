@@ -1,15 +1,15 @@
 a {
     text-decoration: none;
     color: black;
-    margin-left: auto;
-}
-
-a:visited {
-    color: rgb(80, 80, 80);
 }
 
 body {
     font-family: 'Comfortaa', cursive;   
+    margin: 0;
+}
+
+main {
+    padding: 10px;
 }
 
 h1, h2, h3, h4 {
@@ -23,6 +23,7 @@ li {
 #nav_bar {
     display: flex;
     flex-direction: row;
+    background-color: #caddca;
 }
 
 #nav_bar h1 {
@@ -57,12 +58,25 @@ li {
     /* margin-right: auto; */
 }
 
+.create_edit_cancel {
+    display: block;
+    width: 100px;
+    text-align: center;
+    margin: 10px 10px 10px auto;
+    background-color: #324c36;
+    color: white;
+    padding: 3px;
+    box-shadow: 3px 3px 0 #030303;
+}
+
 form {
     padding: 5px;
     display: flex;
     flex-direction: column;
     width: 40%;
-    box-shadow: 0 0 20px rgb(221, 221, 221);
+    background-color: #caddca;
+    color: #282828;
+    box-shadow: 5px 5px 0 #282828;
     margin: 5px auto;
 }
 
@@ -74,12 +88,14 @@ input, option, select {
 }
 
 input:hover, option:hover, select:hover {
-    box-shadow: 0 0 10px rgb(190, 190, 190);
+    box-shadow: 3px 3px 0 #282828;
     border: 2px solid transparent;
 }
 
-.member {
-    height: 50px;
+.member_class {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
     width: 40%;
     margin: 5px 0 0 4%;
     border: 2px solid transparent;
@@ -88,25 +104,80 @@ input:hover, option:hover, select:hover {
     padding: 5px;
 }
 
-.member p {
-    margin: 0;
+.member_class p {
+    margin: 3px;
+    width: fit-content;
 }
 
-.member:hover {
+.member_class:hover {
     width: 45%;
+    box-shadow: 4px 4px 0 black;
 }
 
-.member span {
+.member_class span {
     color: black;
     font-size: 22px;
 }
 
-.member div {
+.member_class div {
     margin-left: auto;
-    width:fit-content;
     color: transparent;
 }
 
-.member:hover div{
+.member_class:hover div{
     color: #4e584e
+}
+
+.gym_class p {
+    margin: 3px;
+}
+
+.gym_class:hover {
+    width: 45%;
+}
+
+.gym_class span {
+    color: black;
+    font-size: 22px;
+}
+
+.gym_class {
+    display: grid;
+    width: 40%;
+    margin: 5px 0 0 4%;
+    border: 2px solid transparent;
+    background-color: #caddca;
+    color: #282828;
+    padding: 5px;
+    /* grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr; */
+    grid-template-areas: 
+        "time time time"
+        "instructor instructor instructor"
+        "duration duration duration"
+        "location location location";
+}
+
+.class_type {
+    grid-area: "type"
+}
+
+.class_time {
+    grid-area: "time"
+}
+
+.class_instructor {
+    grid-area: "instructor"
+}
+
+.class_duration {
+    grid-area: "duration"
+}
+
+.class_location {
+    grid-area: "location"
+}
+
+.class_capacity {
+    grid-area: "capacity"
 }

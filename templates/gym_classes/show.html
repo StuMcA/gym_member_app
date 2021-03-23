@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="/classes/{{gym_class.id}}/edit" class="create_edit_cancel">Edit class details </a>
     <header>
         <h3>Class details</h3>
     </header>
@@ -12,8 +13,6 @@
     <p>{{gym_class.duration}}</p>
     <p>{{gym_class.location.name}}</p>
     <p>{{gym_class.location.capacity}}</p>
-
-    <a href="/classes/{{gym_class.id}}/edit">Edit class details </a>
 
     <form action="/classes/{{gym_class.id}}/delete" method="POST">
         <input type="submit" value="Delete class">

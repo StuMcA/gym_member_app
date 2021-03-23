@@ -2,36 +2,53 @@
 
 {% block content %}
 
-<a href="/classes/new">Add a new class</a>
-<ul>
+<a href="/classes/new" class="create_edit_cancel">Add a new class</a>
+<!-- <ul> -->
     {% for class in classes %}
         {% if class.date >= date %}
-            <a href="/classes/{{class.id}}">
-                <li>
-                    <p>
-                        {{class.class_type}}
-                    </p>
-                    <p>
-                        {{class.date[8:10]}}/{{class.date[5:7]}}/{{class.date[:4]}}
-                    </p>
-                    <p>
-                        {{class.time}}
-                    </p>
-                    <p>
-                        {{class.instructor.name}}
-                    </p>
-                    <p>
-                        {{class.duration}}
-                    </p>
-                    <p>
-                        {{class.location.name}}
-                    </p>
-                    <p>
-                        {{class.location.capacity}}
-                    </p>
-                </li>
-            </a>
+            <!-- <a href="/classes/{{class.id}}" > -->
+                <div class="gym_class">
+                    <!-- <li> -->
+                        <div class="class_type">
+                            <p>
+                                <span>{{class.class_type}}</span>
+                            </p>
+                        </div>
+                        
+                        <div class="class_time">
+                            <p>
+                                {{class.date[8:10]}}/{{class.date[5:7]}}/{{class.date[:4]}}
+                            </p>
+                            <p>
+                                {{class.time}}
+                            </p>
+                        </div>
+                        <div class="class_instructor">
+                            <p>
+                                {{class.instructor.name}}
+                            </p>
+                        </div>
+                        <div class="class_duration">
+                            <p>
+                                {{class.duration}} mins
+                            </p>
+                        </div>
+                        <div class="class_location">
+                            <p>
+                                {{class.location.name}}
+                            </p>
+                        </div>
+                        <div class="class_capacity">
+                            <p>
+                                Capacity: {{class.location.capacity}}
+                            </p>
+                        </div>
+                        
+                    <!-- </li> -->
+                </div>
+                
+            <!-- </a> -->
         {% endif %}
     {% endfor %}
-</ul>
+<!-- </ul> -->
 {% endblock %}

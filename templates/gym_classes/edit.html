@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<a href="/classes/{{gym_class.id}}" class="create_edit_cancel">Cancel</a>
 <header>
     <h3>Update class details:</h3>
 </header>
-
 
 <form action="/classes/{{gym_class.id}}" method="POST">
     <label for="class_type">What's the class: </label>

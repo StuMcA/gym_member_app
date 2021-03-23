@@ -12,7 +12,7 @@ def save(gym_class):
         INSERT INTO gym_classes
         (class_type, class_date, class_time, instructor_id, duration, location_id) 
         VALUES (%s, %s, %s, %s, %s, %s)
-        RETURNING id
+        RETURNING id;
     """
     values = [gym_class.class_type, gym_class.date, gym_class.time, gym_class.instructor.id, gym_class.duration, gym_class.location.id]
     result = run_sql(sql, values)
@@ -22,7 +22,7 @@ def save(gym_class):
 
 def select_all():
     all_classes = []
-    sql = "SELECT * FROM gym_classes"
+    sql = "SELECT * FROM gym_classes ORDER BY class_date, class_time"
     results = run_sql(sql)
     
     for row in results:

@@ -19,7 +19,7 @@ def save(member):
 
 def select_all():
     all_members = []
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM members ORDER BY last_name, first_name"
     results = run_sql(sql)
     for row in results:
         member = Member(row['first_name'], row['last_name'], row['date_of_birth'], row['membership'], row['id'])
@@ -59,7 +59,13 @@ def delete_all():
 def classes(member):
     gym_classes = []
 
-    sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN attendees ON attendees.class_id = gym_classes.id WHERE member_id = %s"
+    sql = """
+        SELECT gym_classes.* 
+        FROM gym_classes 
+        INNER JOIN attendees 
+        ON attendees.class_id = gym_classes.id 
+        WHERE member_id = %s
+    """
     values = [member.id]
     results = run_sql(sql, values)
 

@@ -157,7 +157,8 @@ input:hover, option:hover, select:hover {
 }
 
 .gym_class:hover {
-    width: 45%;
+    /* width: 45%; */
+    padding-right: 5%;
 }
 
 .gym_class span {
@@ -168,7 +169,7 @@ input:hover, option:hover, select:hover {
 .gym_class {
     display: grid;
     width: 40%;
-    margin: 5px 0 0 4%;
+    margin: 5px auto 0 4%;
     border: 2px solid transparent;
     background-color: #caddca;
     color: #282828;
@@ -176,10 +177,11 @@ input:hover, option:hover, select:hover {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
-        "time time time"
+        "type . time"
         "instructor instructor instructor"
         "duration duration duration"
-        "location location location";
+        "location . capacity"
+        ". . click";
 }
 
 .class_type {
@@ -209,7 +211,9 @@ input:hover, option:hover, select:hover {
 .click {
     width:fit-content;
     margin-left: auto;
+    margin-right: -33%;
     color: transparent;
+    grid-area: click;
 }
 
 .gym_class:hover .click {

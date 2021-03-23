@@ -28,8 +28,10 @@ def destroy(id):
     return_to = request.form['return_to']
 
     attendance = attendance_repository.select(id)
+    
     gym_class_id = attendance.gym_class.id
     member_id = attendance.member.id
+
     attendance_repository.delete(id)
 
     if return_to == "classes":

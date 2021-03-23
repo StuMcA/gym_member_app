@@ -54,6 +54,20 @@ def select_by_class_and_member(gym_class, member):
 
     return attendees
 
+def select_by_member(member):
+    attendees = []
+    sql = "SELECT * FROM attendees WHERE member_id = %s"
+    values = [member.id]
+    results = run_sql(sql, values)
+
+    for result in results:
+        gym_class = gym_class_repository.select(result["class_id"])
+        member = member_repository.select(result["member_id"])
+        attendance = Attendance(gym_class, member, result["id"])
+        attendees.append(attendance)
+
+    return attendees
+
 def select_by_class(gym_class):
     attendees = []
     sql = "SELECT * FROM attendees WHERE class_id = %s"

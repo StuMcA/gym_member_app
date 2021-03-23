@@ -1,0 +1,98 @@
+a {
+    text-decoration: none;
+    color: black;
+    margin-left: auto;
+}
+
+a:visited {
+    color: rgb(80, 80, 80);
+}
+
+body {
+    font-family: 'Comfortaa', cursive;   
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+#nav_bar {
+    display: flex;
+    flex-direction: row;
+}
+
+#nav_bar h1 {
+    margin: auto 20px;
+}
+
+#nav_bar ul {
+    margin: auto 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#nav_bar ul li {
+    height: 20px;
+    width: 100px;
+    margin: 3px 5px;
+    padding: 5px;
+    border: 1px solid transparent;
+}
+
+#nav_bar ul li:hover {
+    background-color: rgb(233, 233, 233);
+    color: rgb(49, 49, 49);
+}
+
+#nav_bar ul li p {
+    margin: auto 0 auto 0;
+}
+
+.logo {
+    /* margin-right: auto; */
+}
+
+form {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    box-shadow: 0 0 20px rgb(221, 221, 221);
+    margin: 5px auto;
+}
+
+input, option, select {
+    width: 80%;
+    margin: 10px auto;
+    height: 30px;
+    border: 2px solid rgb(185, 185, 185);
+}
+
+input:hover, option:hover, select:hover {
+    box-shadow: 0 0 10px rgb(190, 190, 190);
+    border: 2px solid transparent;
+}
+
+.member {
+    height: 50px;
+    width: 40%;
+    margin: 5px 0 0 4%;
+    border: 2px solid transparent;
+    background-color: #caddca;
+    color: #282828;
+    padding: 5px;
+}
+
+.member:hover {
+    border: 2px solid rgb(80, 80, 80);
+}
+
+.member span {
+    color: black;
+    font-size: 22px;
+}

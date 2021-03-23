@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Update class details:</h1>
+<header>
+    <h3>Update class details:</h3>
+</header>
+
 
 <form action="/classes/{{gym_class.id}}" method="POST">
     <label for="class_type">What's the class: </label>
@@ -13,7 +16,7 @@
         {% endfor %}
     </select>
     <label for="date">Date: </label>
-    <input type="date" name="date" id="date" value={{gym_class.date}}>
+    <input type="date" name="date" id="date" value={{gym_class.date}} min="{{date}}">
     <label for="time">Time: </label>
     <input type="time" name="time" id="time" value={{gym_class.time}}>
     <label for="duration">Duration: </label>

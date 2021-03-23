@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Update member details:</h1>
-<form action="/members/{{member.id}}" method="POST">
-    <label for="first_name">First name:</label>
-    <input type="text" name="first_name" id="first_name" value={{member.first_name}}>
-    <label for="last_name">Last name:</label>
-    <input type="text" name="last_name" id="last_name" value={{member.last_name}}>
-    <label for="date_of_birth">DOB:</label>
-    <input type="date" name="date_of_birth" id="date_of_birth" value={{member.date_of_birth}}>
-    <label for="membership">Membership:</label>
-    <select name="membership" id="membership">
-        <option value="peak">Peak</option>
-        <option value="off peak">Off peak</option>
-    </select>
-    <input type="submit" value="Save changes">
-</form>
+    <header>
+        <h3>Update member details:</h3>
+    </header>
+
+    <form action="/members/{{member.id}}" method="POST">
+        <label for="first_name">First name:</label>
+        <input type="text" name="first_name" id="first_name" value={{member.first_name}}>
+        <label for="last_name">Last name:</label>
+        <input type="text" name="last_name" id="last_name" value={{member.last_name}}>
+        <label for="date_of_birth">DOB:</label>
+        <input type="date" name="date_of_birth" id="date_of_birth" value={{member.date_of_birth}} max="{{date}}">
+        <label for="membership">Membership:</label>
+        <select name="membership" id="membership">
+            <option value="peak">Peak</option>
+            <option value="off peak">Off peak</option>
+        </select>
+        <input type="submit" value="Save changes">
+    </form>
 
 {% endblock %}

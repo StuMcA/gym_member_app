@@ -1,3 +1,4 @@
+from datetime import date, timedelta
 from flask import Blueprint, render_template, request, redirect
 import repositories.member_repository as member_repository
 from models.member import Member
@@ -25,7 +26,8 @@ def show_member(id):
 
 @member_blueprint.route('/members/new')
 def new_member():
-    return render_template('/members/new.html', title="Add new member")
+    sixteen_today_date = str(date.today() - timedelta(16*365.25))
+    return render_template('/members/new.html', title="Add new member", date=sixteen_today_date)
 
 
 @member_blueprint.route('/members/create', methods=['POST'])
@@ -40,8 +42,9 @@ def create_member():
 
 @member_blueprint.route('/members/<id>/edit')
 def edit_member(id):
+    sixteen_today_date = str(date.today() - timedelta(16*365.25))
     member = member_repository.select(id)
-    return render_template('members/edit.html', title=f"Edit member #{id}", member = member)
+    return render_template('members/edit.html', title=f"Edit member #{id}", member = member, date=sixteen_today_date)
 
 @member_blueprint.route('/members/<id>', methods = ['POST'])
 def update_member(id):

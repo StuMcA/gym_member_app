@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Class details</h1>
+    <header>
+        <h3>Class details</h3>
+    </header>
+
     <p>{{gym_class.class_type}}</p>
     <p>{{gym_class.instructor.name}}</p>
-    <p>{{gym_class.date}}</p>
+    <p>{{gym_class.date[8:10]}}/{{gym_class.date[5:7]}}/{{gym_class.date[:4]}}</p>
     <p>{{gym_class.time}}</p>
     <p>{{gym_class.duration}}</p>
     <p>{{gym_class.location.name}}</p>
@@ -28,7 +31,10 @@
         <input type="submit" value="Add">
     </form>
 
-    <h2>Members booked in</h2>
+    <header>
+        <h3>Members booked in</h3>
+    </header>
+
     {% for member in attendees %}
     <a href="/members/{{member.id}}">
         <p>{{member.first_name}}</p>

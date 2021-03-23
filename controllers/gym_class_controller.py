@@ -30,10 +30,18 @@ def gym_class(id):
 
 @gym_class_blueprint.route('/classes/<id>/edit')
 def edit_class(id):
+    todays_date = str(date.today())
     gym_class = gym_class_repository.select(id)
     all_instructors = instructor_repository.select_all()
     all_locations = location_repository.select_all()
-    return render_template('/gym_classes/edit.html', title="Edit class", gym_class=gym_class, instructors=all_instructors, locations=all_locations)
+    return render_template(
+        '/gym_classes/edit.html', 
+        title="Edit class", 
+        gym_class=gym_class, 
+        instructors=all_instructors, 
+        locations=all_locations, 
+        date=todays_date
+    )
 
 @gym_class_blueprint.route('/classes/<id>', methods=['POST'])
 def update_class(id):
@@ -54,9 +62,10 @@ def update_class(id):
 # New class
 @gym_class_blueprint.route('/classes/new')
 def new_class():
+    todays_date = str(date.today())
     all_instructors = instructor_repository.select_all()
     all_locations = location_repository.select_all()
-    return render_template('/gym_classes/new.html', title="Add new class", instructors=all_instructors, locations=all_locations)
+    return render_template('/gym_classes/new.html', title="Add new class", instructors=all_instructors, locations=all_locations, date=todays_date)
 
 # Create class
 @gym_class_blueprint.route('/classes/create', methods = ['POST'])

@@ -1,29 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Add a new class here</h1>
-<form action="/classes/create" method="POST">
-    <label for="class_type">What's the class: </label>
-    <input type="text" id="class_type" name="class_type">
-    <label for="instructor">Instructor: </label>
-    <select name="instructor" id="instructor">
-        {% for instructor in instructors %}
-            <option value="{{instructor.id}}">{{instructor.name}}</option>
-        {% endfor %}
-    </select>
-    <label for="date">Date: </label>
-    <input type="date" name="date" id="date">
-    <label for="time">Time: </label>
-    <input type="time" name="time" id="time">
-    <label for="duration">Duration: </label>
-    <input type="number" name="duration" id="duration">
-    <label for="location">Location: </label>
-    <select name="location" id="location">
-        {% for location in locations %}
-        <option value="{{location.id}}">{{location.name}}</option>
-        {% endfor %}
-    </select>
-    <input type="submit">
-</form>
+    <header>
+        <h3>Add a new class here</h3>
+    </header>
+
+    <form action="/classes/create" method="POST">
+        <label for="class_type">What's the class: </label>
+        <input type="text" id="class_type" name="class_type">
+        <label for="instructor">Instructor: </label>
+        <select name="instructor" id="instructor">
+            {% for instructor in instructors %}
+                <option value="{{instructor.id}}">{{instructor.name}}</option>
+            {% endfor %}
+        </select>
+        <label for="date">Date: </label>
+        <input type="date" name="date" id="date" min="{{date}}">
+        <label for="time">Time: </label>
+        <input type="time" name="time" id="time">
+        <label for="duration">Duration: </label>
+        <input type="number" name="duration" id="duration">
+        <label for="location">Location: </label>
+        <select name="location" id="location">
+            {% for location in locations %}
+            <option value="{{location.id}}">{{location.name}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
 
 {% endblock %}

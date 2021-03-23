@@ -88,11 +88,25 @@ input:hover, option:hover, select:hover {
     padding: 5px;
 }
 
+.member p {
+    margin: 0;
+}
+
 .member:hover {
-    border: 2px solid rgb(80, 80, 80);
+    width: 45%;
 }
 
 .member span {
     color: black;
     font-size: 22px;
+}
+
+.member div {
+    margin-left: auto;
+    width:fit-content;
+    color: transparent;
+}
+
+.member:hover div{
+    color: #4e584e
 }

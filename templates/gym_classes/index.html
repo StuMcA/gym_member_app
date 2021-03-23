@@ -5,31 +5,33 @@
 <a href="/classes/new">Add a new class</a>
 <ul>
     {% for class in classes %}
-    <a href="/classes/{{class.id}}">
-        <li>
-            <p>
-                {{class.class_type}}
-            </p>
-            <p>
-                {{class.date}}
-            </p>
-            <p>
-                {{class.time}}
-            </p>
-            <p>
-                {{class.instructor.name}}
-            </p>
-            <p>
-                {{class.duration}}
-            </p>
-            <p>
-                {{class.location.name}}
-            </p>
-            <p>
-                {{class.location.capacity}}
-            </p>
-        </li>
-    </a>
+        {% if class.date >= date %}
+            <a href="/classes/{{class.id}}">
+                <li>
+                    <p>
+                        {{class.class_type}}
+                    </p>
+                    <p>
+                        {{class.date}}
+                    </p>
+                    <p>
+                        {{class.time}}
+                    </p>
+                    <p>
+                        {{class.instructor.name}}
+                    </p>
+                    <p>
+                        {{class.duration}}
+                    </p>
+                    <p>
+                        {{class.location.name}}
+                    </p>
+                    <p>
+                        {{class.location.capacity}}
+                    </p>
+                </li>
+            </a>
+        {% endif %}
     {% endfor %}
 </ul>
 {% endblock %}

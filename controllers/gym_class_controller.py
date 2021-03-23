@@ -1,4 +1,5 @@
 from flask import Flask, redirect, request, render_template, Blueprint
+from datetime import date
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
 import repositories.instructor_repository as instructor_repository
@@ -11,8 +12,9 @@ gym_class_blueprint = Blueprint("gym_class", __name__)
 
 @gym_class_blueprint.route('/classes')
 def classes():
+    todays_date = str(date.today())
     gym_classes = gym_class_repository.select_all()
-    return render_template('/gym_classes/index.html', title="Classes", classes=gym_classes)
+    return render_template('/gym_classes/index.html', title="Classes", classes=gym_classes, date=todays_date)
 
 @gym_class_blueprint.route('/classes/<id>')
 def gym_class(id):

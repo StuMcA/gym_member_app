@@ -28,6 +28,10 @@
         <p>{{attendance.gym_class.duration}}</p>
         <p>{{attendance.gym_class.location.name}}</p>
     </a>
+    <form action="/attendances/{{attendance.id}}/delete" method="POST">
+        <input type="hidden" name="return_to" value="members">
+        <input type="submit" value="Cancel booking">
+    </form>
 
     {% endfor %}
 {% endblock %}

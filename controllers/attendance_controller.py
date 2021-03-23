@@ -12,7 +12,7 @@ attendance_blueprint = Blueprint('attendance', __name__)
 
 @attendance_blueprint.route('/attendances/new', methods=["POST"])
 def create():
-    # gym_class = gym_class_repository.select(request.form["class_id"])
+    gym_class = gym_class_repository.select(request.form["class_id"])
     member = member_repository.select(request.form["member_id"])
     existing_attendances = attendance_repository.select_by_class_and_member(gym_class, member)
     if len(existing_attendances) > 0:
@@ -25,7 +25,14 @@ def create():
 
 @attendance_blueprint.route('/attendances/<id>/delete', methods=["POST"])
 def destroy(id):
+    return_to = request.form['return_to']
+
     attendance = attendance_repository.select(id)
     gym_class_id = attendance.gym_class.id
+    member_id = attendance.member.id
     attendance_repository.delete(id)
-    return redirect(f'/classes/{gym_class_id}')
+
+    if return_to == "classes":
+        return redirect(f'/classes/{gym_class_id}')
+    else:
+        return redirect(f'/members/{member_id}')

@@ -39,6 +39,7 @@
         <p>
             #{{attendance.member.id}} - {{attendance.member.first_name}} {{attendance.member.last_name}}
             <form action="/attendances/{{attendance.id}}/delete" method="POST">
+                <input type="hidden" name="return_to" value="classes">
                 <input type="submit" value="Remove from class">
             </form>
         </p>

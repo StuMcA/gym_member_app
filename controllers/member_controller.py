@@ -17,12 +17,12 @@ def members():
 def show_member(id):
     member_found = member_repository.select(id)
     attendances_found = attendance_repository.select_by_member(member_found)
-    classes_found = member_repository.classes(member_found)
+    # classes_found = member_repository.classes(member_found)
     return render_template(
         'members/show.html', 
         title=f"Member #{member_found.id} - {member_found.first_name} {member_found.last_name}", 
         member=member_found, 
-        classes=classes_found,
+        # classes=classes_found,
         attendances=attendances_found
     )
 

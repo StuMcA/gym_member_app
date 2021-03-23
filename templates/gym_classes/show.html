@@ -22,10 +22,14 @@
         <input type="hidden" name="class_id" value="{{gym_class.id}}">
         <label for="member">Add member to class: </label>
         <select name="member_id" id="member">
-            <option value="" selected="true" disabled="disabled">Select a member</option>
-            {% for member in members %}
-            <option value="{{member.id}}">#{{member.id}} - {{member.first_name}} {{member.last_name}}</option>
-            {% endfor %}
+            {% if class_full %}
+                <option value="" selected="true" disabled="disabled">Sorry the class is full!</option>
+            {% else %}
+                <option value="" selected="true" disabled="disabled">Select a member</option>
+                {% for member in members %}
+                <option value="{{member.id}}">#{{member.id}} - {{member.first_name}} {{member.last_name}}</option>
+                {% endfor %}
+            {% endif %}
         </select>
         <input type="submit" value="Add">
     </form>

@@ -26,7 +26,7 @@ def gym_class(id):
         title=f"{gym_class.class_type} with {gym_class.instructor.name}", 
         gym_class=gym_class, 
         members=members, 
-        attendees=attendees, 
+        attendees=attendees
     )
 
 @gym_class_blueprint.route('/classes/<id>/edit')

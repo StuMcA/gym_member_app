@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS attendees;
 DROP TABLE IF EXISTS gym_classes;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS instructors;
+DROP TABLE IF EXISTS locations;
 
 CREATE TABLE members (
     id SERIAL PRIMARY KEY,
@@ -26,7 +27,7 @@ CREATE TABLE gym_classes (
     id SERIAL PRIMARY KEY,
     class_type VARCHAR(255),
     class_date VARCHAR(255),
-    class_time VARCHAR(255),
+    class_time TIME,
     instructor_id INT REFERENCES instructors(id),
     duration INT,
     location_id INT REFERENCES locations(id)

@@ -2,22 +2,34 @@
 
 {% block content %}
     <a href="/classes/{{gym_class.id}}/edit" class="create_edit_cancel">Edit class details </a>
-    <p class="flash">{{get_flashed_messages()[0]}}</p>
-    <header>
-        <h3>Class details</h3>
-    </header>
-
-    <p>{{gym_class.class_type}}</p>
-    <p>{{gym_class.instructor.name}}</p>
-    <p>{{gym_class.date[8:10]}}/{{gym_class.date[5:7]}}/{{gym_class.date[:4]}}</p>
-    <p>{{gym_class.time}}</p>
-    <p>{{gym_class.duration}}</p>
-    <p>{{gym_class.location.name}}</p>
-    <p>{{gym_class.location.capacity}}</p>
-
-    <form action="/classes/{{gym_class.id}}/delete" method="POST">
+    <form action="/classes/{{gym_class.id}}/delete" method="POST" class="delete">
         <input type="submit" value="Delete class">
     </form>
+    <p class="flash">{{get_flashed_messages()[0]}}</p>
+    <header>
+        <h3 class="type">{{gym_class.class_type}}</h3>
+    </header>
+
+    <article>
+        <div>
+            <p class=larger>{{gym_class.instructor.name}}</p>
+        </div>
+        <div>
+            <p class="larger">{{gym_class.date[8:10]}}/{{gym_class.date[5:7]}}/{{gym_class.date[:4]}}</p>
+            <p>{{gym_class.time.strftime("%H:%M")}}</p>
+            <p>{{gym_class.duration}} mins</p>
+        </div>
+
+        <div>
+            <p class=larger>{{gym_class.location.name}}</p>
+            <p>Booked: {{number_attending}}</p>
+            <p>Capacity: {{gym_class.location.capacity}}</p>
+        </div>
+    
+    </article>
+    
+
+    
 
     <form action="/attendances/new" method="POST">
         <input type="hidden" name="class_id" value="{{gym_class.id}}">
@@ -40,14 +52,14 @@
     </header>
 
     {% for attendance in attendees %}
-    <a href="/members/{{attendance.member.id}}">
-        <p>
-            #{{attendance.member.id}} - {{attendance.member.first_name}} {{attendance.member.last_name}}
-            <form action="/attendances/{{attendance.id}}/delete" method="POST">
+    <a href="/members/{{attendance.member.id}}" class="attendees">
+            <p>
+                #{{attendance.member.id}} - {{attendance.member.first_name}} {{attendance.member.last_name}}
+            </p>
+            <form action="/attendances/{{attendance.id}}/delete" method="POST" class="delete">
                 <input type="hidden" name="return_to" value="classes">
                 <input type="submit" value="Remove from class">
             </form>
-        </p>
     </a>
     {% endfor %}
 

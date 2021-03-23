@@ -22,13 +22,15 @@ def gym_class(id):
     gym_class = gym_class_repository.select(id)
     members = member_repository.select_all()
     attendees = sorted(attendance_repository.select_by_class(gym_class), key=lambda attendance: attendance.member.last_name)
-    class_full = len(attendees) >= gym_class.location.capacity
+    number_attending = len(attendees)
+    class_full = number_attending >= gym_class.location.capacity
     return render_template('/gym_classes/show.html', 
         title=f"{gym_class.class_type} with {gym_class.instructor.name}", 
         gym_class=gym_class, 
         members=members, 
         attendees=attendees,
         class_full=class_full,
+        number_attending=number_attending
     )
 
 @gym_class_blueprint.route('/classes/<id>/edit')

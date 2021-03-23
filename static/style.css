@@ -9,11 +9,16 @@ body {
 }
 
 main {
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Archivo Black', sans-serif;
+    /* font-family: 'Archivo Black', sans-serif; */
+    font-family: 'Comfortaa', cursive;
+    background-color: #caddca;
+    padding: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 li {
@@ -43,19 +48,26 @@ li {
     margin: 3px 5px;
     padding: 5px;
     border: 1px solid transparent;
+    display: flex;
+    justify-content: space-around;
 }
 
 #nav_bar ul li:hover {
     background-color: rgb(233, 233, 233);
     color: rgb(49, 49, 49);
+    box-shadow: 3px 3px 0 #282828;
 }
 
 #nav_bar ul li p {
-    margin: auto 0 auto 0;
+    margin: auto;
 }
 
 .logo {
     /* margin-right: auto; */
+}
+
+.flash {
+    text-align: center;
 }
 
 .create_edit_cancel {
@@ -70,6 +82,7 @@ li {
 }
 
 .image_holder {
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -101,10 +114,11 @@ form {
     background-color: #caddca;
     color: #282828;
     box-shadow: 5px 5px 0 #282828;
-    margin: 5px auto;
+    margin: 10px auto;
 }
 
 input, option, select {
+    font-family: 'Comfortaa', cursive; 
     width: 80%;
     margin: 10px auto;
     height: 30px;
@@ -116,6 +130,24 @@ input:hover, option:hover, select:hover {
     border: 2px solid transparent;
 }
 
+.delete {
+    width: 100%;
+    height:fit-content;
+    background-color: transparent;
+    box-shadow: none;
+    /* border: 1px solid black; */
+    flex-direction: row-reverse;
+}
+
+.delete input {
+    background-color: #983a2a;
+    display: block;
+    width: fit-content;
+    margin: 0 14px 0 auto;
+    border: none;
+    color: white;
+}
+
 .member_class {
     display: flex;
     flex-direction: column;
@@ -124,7 +156,7 @@ input:hover, option:hover, select:hover {
     margin: 5px 0 0 4%;
     border: 2px solid transparent;
     background-color: #caddca;
-    color: #282828;
+    /* color: #fefefe; */
     padding: 5px;
 }
 
@@ -159,6 +191,7 @@ input:hover, option:hover, select:hover {
 .gym_class:hover {
     /* width: 45%; */
     padding-right: 5%;
+    box-shadow: 3px 3px 0 #282828;
 }
 
 .gym_class span {
@@ -218,4 +251,54 @@ input:hover, option:hover, select:hover {
 
 .gym_class:hover .click {
     color: #4e584e;
+}
+
+article {
+    /* border: 1px solid black; */
+    margin: 10px auto;
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+article * {
+    margin: 15px;
+}
+
+.type {
+    font-size: 40px;;
+}
+
+.larger {
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+.attendees {
+    margin: 3px auto 3px auto;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    background-color: #f6f6f6;
+}
+
+.attendees > * {
+    height: fit-content;
+    width: fit-content;
+    padding-left: 20px;
+}
+
+.attendees form {
+    margin: auto 0 auto auto;
+}
+
+.attendees:hover {
+    box-shadow: 3px 3px 0 #282828;
+}
+
+.member_class_list {
+    width: 70%;
 }

@@ -12,7 +12,7 @@ attendance_blueprint = Blueprint('attendance', __name__)
 
 @attendance_blueprint.route('/attendances/new', methods=["POST"])
 def create():
-    gym_class = gym_class_repository.select(request.form["class_id"])
+    # gym_class = gym_class_repository.select(request.form["class_id"])
     member = member_repository.select(request.form["member_id"])
     existing_attendances = attendance_repository.select_by_class_and_member(gym_class, member)
     if len(existing_attendances) > 0:

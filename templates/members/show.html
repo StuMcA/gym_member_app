@@ -19,14 +19,14 @@
         <h3>Classes booked</h3>
     </header>
 
-    {% for gym_class in classes %}
-    <a href="/classes/{{gym_class.id}}">
-        <p>{{gym_class.class_type}}</p>
-        <p>{{gym_class.instructor.name}}</p>
-        <p>{{gym_class.date}}</p>
-        <p>{{gym_class.time}}</p>
-        <p>{{gym_class.duration}}</p>
-        <p>{{gym_class.location.name}}</p>
+    {% for attendance in attendances %}
+    <a href="/classes/{{attendance.gym_class.id}}">
+        <p>{{attendance.gym_class.class_type}}</p>
+        <p>{{attendance.gym_class.instructor.name}}</p>
+        <p>{{attendance.gym_class.date}}</p>
+        <p>{{attendance.gym_class.time}}</p>
+        <p>{{attendance.gym_class.duration}}</p>
+        <p>{{attendance.gym_class.location.name}}</p>
     </a>
 
     {% endfor %}

@@ -2,6 +2,7 @@
 
 {% block content %}
     <a href="/classes/{{gym_class.id}}/edit" class="create_edit_cancel">Edit class details </a>
+    <p class="flash">{{get_flashed_messages()[0]}}</p>
     <header>
         <h3>Class details</h3>
     </header>

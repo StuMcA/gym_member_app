@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, render_template, Blueprint
+from flask import Flask, redirect, request, render_template, Blueprint, flash
 from datetime import time
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
@@ -18,8 +18,10 @@ def create():
     existing_attendances = attendance_repository.select_by_class_and_member(gym_class, member)
     all_attendees = attendance_repository.select_by_class(gym_class)
     if len(existing_attendances) > 0:
+        flash("Member already booked")
         return redirect(f'/classes/{gym_class.id}')
     elif member.membership == "Off Peak" and gym_class.time >= time(9, 00, 00) and gym_class.time <= time(17, 30, 00):
+        flash("Member can't book peak time class with off peak membership")
         return redirect(f'/classes/{gym_class.id}')
     elif len(all_attendees) >= gym_class.location.capacity:
         return redirect(f'/classes/{gym_class.id}')

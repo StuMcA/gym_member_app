@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, render_template, Blueprint
+from flask import Flask, redirect, request, render_template, Blueprint, flash
 from datetime import date
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
@@ -28,7 +28,7 @@ def gym_class(id):
         gym_class=gym_class, 
         members=members, 
         attendees=attendees,
-        class_full=class_full
+        class_full=class_full,
     )
 
 @gym_class_blueprint.route('/classes/<id>/edit')

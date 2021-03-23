@@ -4,6 +4,7 @@ from controllers.gym_class_controller import gym_class_blueprint
 from controllers.attendance_controller import attendance_blueprint
 
 app =Flask(__name__)
+app.secret_key = 'lkajdsfbl3498'
 
 app.register_blueprint(member_blueprint)
 app.register_blueprint(gym_class_blueprint)

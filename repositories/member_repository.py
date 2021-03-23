@@ -1,7 +1,12 @@
 from db.run_sql import run_sql
 from models.member import Member
+from models.gym_class import GymClass
 import repositories.attendance_repository as attendance_repository
+import repositories.instructor_repository as instructor_repository
+import repositories.location_repository as location_repository
 
+
+# CRUD operations
 def save(member):
     sql = """
         INSERT INTO members (first_name, last_name, date_of_birth, membership)
@@ -49,3 +54,26 @@ def delete(id):
 def delete_all():
     sql = "DELETE FROM members"
     run_sql(sql)
+
+# Gym class interactions
+def classes(member):
+    gym_classes = []
+
+    sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN attendees ON attendees.class_id = gym_classes.id WHERE member_id = %s"
+    values = [member.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        instructor = instructor_repository.select(row["instructor_id"])
+        location = location_repository.select(row["location_id"])
+        gym_class = GymClass(row["class_type"], 
+            instructor, 
+            row["class_date"], 
+            row["class_time"], 
+            row["duration"], 
+            location, 
+            row["id"]
+        )
+        gym_classes.append(gym_class)
+    
+    return gym_classes

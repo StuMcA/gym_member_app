@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    <h1>Member details</h1>
     <p>{{member.first_name}}</p>
     <p>{{member.last_name}}</p>
     <p>{{member.date_of_birth}}</p>
@@ -11,4 +11,18 @@
     <form action="/members/{{member.id}}/delete" method="POST">
         <input type="submit" value="Delete member">
     </form>
+
+    <h1>Classes booked</h1>
+
+    {% for gym_class in classes %}
+    <a href="/classes/{{gym_class.id}}">
+        <p>{{gym_class.class_type}}</p>
+        <p>{{gym_class.instructor.name}}</p>
+        <p>{{gym_class.date}}</p>
+        <p>{{gym_class.time}}</p>
+        <p>{{gym_class.duration}}</p>
+        <p>{{gym_class.location.name}}</p>
+    </a>
+
+    {% endfor %}
 {% endblock %}

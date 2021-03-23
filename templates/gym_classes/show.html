@@ -30,9 +30,11 @@
 
     <h2>Members booked in</h2>
     {% for member in attendees %}
+    <a href="/members/{{member.id}}">
         <p>{{member.first_name}}</p>
         <p>{{member.last_name}}</p>
         <p>{{member.id}}</p>
+    </a>
     {% endfor %}
 
 {% endblock %}

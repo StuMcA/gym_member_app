@@ -4,6 +4,7 @@ import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
 import repositories.instructor_repository as instructor_repository
 import repositories.location_repository as location_repository
+import repositories.attendance_repository as attendance_repository
 from models.gym_class import GymClass
 from models.member import Member
 from models.instructor import Instructor
@@ -20,7 +21,7 @@ def classes():
 def gym_class(id):
     gym_class = gym_class_repository.select(id)
     members = member_repository.select_all()
-    attendees = gym_class_repository.members(gym_class)
+    attendees = attendance_repository.select_by_class(gym_class)
     return render_template('/gym_classes/show.html', 
         title=f"{gym_class.class_type} with {gym_class.instructor.name}", 
         gym_class=gym_class, 

@@ -69,6 +69,30 @@ li {
     box-shadow: 3px 3px 0 #030303;
 }
 
+.image_holder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.image_holder a {
+    margin: 5px 0 0 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.image_holder  a  p {
+    color: #282828;
+    background-color: #caddca;
+    left: 20px;
+    bottom: 20px;
+    position: absolute;
+    z-index: 1;
+    padding: 6px;
+    box-shadow: 3px 3px 0 #282828;
+}
+
 form {
     padding: 5px;
     display: flex;
@@ -119,12 +143,12 @@ input:hover, option:hover, select:hover {
     font-size: 22px;
 }
 
-.member_class div {
+.member_class div, .click {
     margin-left: auto;
     color: transparent;
 }
 
-.member_class:hover div{
+.member_class:hover div, .click{
     color: #4e584e
 }
 
@@ -149,8 +173,8 @@ input:hover, option:hover, select:hover {
     background-color: #caddca;
     color: #282828;
     padding: 5px;
-    /* grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr; */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
         "time time time"
         "instructor instructor instructor"
@@ -159,25 +183,35 @@ input:hover, option:hover, select:hover {
 }
 
 .class_type {
-    grid-area: "type"
+    grid-area: type
 }
 
 .class_time {
-    grid-area: "time"
+    grid-area: time
 }
 
 .class_instructor {
-    grid-area: "instructor"
+    grid-area: instructor
 }
 
 .class_duration {
-    grid-area: "duration"
+    grid-area: duration
 }
 
 .class_location {
-    grid-area: "location"
+    grid-area: location
 }
 
 .class_capacity {
-    grid-area: "capacity"
+    grid-area: capacity
+}
+
+.click {
+    width:fit-content;
+    margin-left: auto;
+    color: transparent;
+}
+
+.gym_class:hover .click {
+    color: #4e584e;
 }

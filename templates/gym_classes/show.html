@@ -34,11 +34,14 @@
         <h3>Members booked in</h3>
     </header>
 
-    {% for member in attendees %}
-    <a href="/members/{{member.id}}">
-        <p>{{member.first_name}}</p>
-        <p>{{member.last_name}}</p>
-        <p>{{member.id}}</p>
+    {% for attendance in attendees %}
+    <a href="/members/{{attendance.member.id}}">
+        <p>
+            #{{attendance.member.id}} - {{attendance.member.first_name}} {{attendance.member.last_name}}
+            <form action="/attendances/{{attendance.id}}/delete" method="POST">
+                <input type="submit" value="Remove from class">
+            </form>
+        </p>
     </a>
     {% endfor %}
 

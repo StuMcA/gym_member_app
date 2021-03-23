@@ -6,7 +6,7 @@
 <!-- <ul> -->
     {% for class in classes %}
         {% if class.date >= date %}
-            <!-- <a href="/classes/{{class.id}}" > -->
+            <a href="/classes/{{class.id}}" >
                 <div class="gym_class">
                     <!-- <li> -->
                         <div class="class_type">
@@ -43,11 +43,14 @@
                                 Capacity: {{class.location.capacity}}
                             </p>
                         </div>
+                        <div class="click">
+                            <p>Click for more</p>
+                        </div>
                         
                     <!-- </li> -->
                 </div>
                 
-            <!-- </a> -->
+            </a>
         {% endif %}
     {% endfor %}
 <!-- </ul> -->

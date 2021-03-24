@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="/classes/{{gym_class.id}}/edit" class="create_edit_cancel">Edit class details </a>
     <form action="/classes/{{gym_class.id}}/delete" method="POST" class="delete">
         <input type="submit" value="Delete class">
     </form>
@@ -9,6 +8,7 @@
     <header>
         <h3 class="type">{{gym_class.class_type}}</h3>
     </header>
+    <a href="/classes/{{gym_class.id}}/edit" class="create_edit_cancel">Edit class details </a>
 
     <article>
         <div>
@@ -44,7 +44,7 @@
                 {% endfor %}
             {% endif %}
         </select>
-        <input type="submit" value="Add">
+        <input type="submit" value="Add" {% if class_full %} disabled="disabed" {% endif %}>
     </form>
 
     <header>
@@ -54,7 +54,7 @@
     {% for attendance in attendees %}
     <a href="/members/{{attendance.member.id}}" class="attendees">
             <p>
-                #{{attendance.member.id}} - {{attendance.member.first_name}} {{attendance.member.last_name}}
+                #{{attendance.member.id}} - {{attendance.member.last_name}}, {{attendance.member.first_name}}
             </p>
             <form action="/attendances/{{attendance.id}}/delete" method="POST" class="delete">
                 <input type="hidden" name="return_to" value="classes">

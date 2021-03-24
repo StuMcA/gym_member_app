@@ -22,12 +22,19 @@ def gym_class(id):
     gym_class = gym_class_repository.select(id)
     members = member_repository.select_all()
     attendees = sorted(attendance_repository.select_by_class(gym_class), key=lambda attendance: attendance.member.last_name)
+
     number_attending = len(attendees)
     class_full = number_attending >= gym_class.location.capacity
+
+    members_not_attending = []
+    for member in members:
+        if len(attendance_repository.select_by_class_and_member(gym_class, member)) == 0:
+            members_not_attending.append(member)
+
     return render_template('/gym_classes/show.html', 
         title=f"{gym_class.class_type} with {gym_class.instructor.name}", 
         gym_class=gym_class, 
-        members=members, 
+        members=members_not_attending, 
         attendees=attendees,
         class_full=class_full,
         number_attending=number_attending

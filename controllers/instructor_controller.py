@@ -12,8 +12,8 @@ def index():
 @instructor_blueprint.route('/instructors/<id>')
 def instructor(id):
     instructor = instructor_repository.select(id)
-    classes_found = instructor_repository.classes(instructor)
-    return render_template('/instructors/show.html', instructor=instructor, classes=classes_found)
+    classes_sorted = sorted(instructor_repository.classes(instructor), key = lambda instructor: (instructor.date, instructor.time))
+    return render_template('/instructors/show.html', instructor=instructor, classes=classes_sorted)
 
 @instructor_blueprint.route('/instructors/new')
 def new_instructor():

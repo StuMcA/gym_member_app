@@ -13,8 +13,8 @@ def index():
 @location_blueprint.route('/locations/<id>')
 def location(id):
     location = location_repository.select(id)
-    classes_found = location_repository.classes(location)
-    return render_template('/locations/show.html', location=location, classes=classes_found)
+    classes_sorted = sorted(location_repository.classes(location), key = lambda location: (location.date, location.time))
+    return render_template('/locations/show.html', location=location, classes=classes_sorted)
 
 @location_blueprint.route('/locations/new')
 def new_location():

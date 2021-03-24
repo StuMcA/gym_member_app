@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="/rooms/{{rooms.id}}/delete" method="POST" class="delete">
+        <input type="submit" value="Remove instructor">
+    </form>
+    <header>
+        <h3>Room details</h3>
+    </header>
+    <a href="/rooms/{{room.id}}/edit" class="create_edit_cancel">Edit room details</a>
+    <article>
+        <p class="larger">{{room.name}}</p>
+    </article>
+
+    <header>
+        <h3>Classes held in room</h3>
+    </header>
+
+    {% for gym_class in classes %}
+    <a href="/classes/{{gym_class.id}}" class="attendees">
+        <p>{{gym_class.class_type}}</p>
+        <p>{{gym_class.date[8:10]}}/{{gym_class.date[5:7]}}/{{gym_class.date[:4]}}</p>
+        <p>{{gym_class.time.strftime("%H:%M")}}</p>
+        <p>{{gym_class.duration}} mins</p>
+        <p>{{gym_class.location.name}}</p>
+        <form action="/classes/{{gym_class.id}}/delete" method="POST" class="delete">
+            <input type="hidden" name="return_to" value="rooms">
+            <input type="submit" value="Cancel class">
+        </form>
+    </a>
+
+
+    {% endfor %}
+{% endblock %}

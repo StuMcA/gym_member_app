@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/locations/new" class="create_edit_cancel">Add new room</a>
+
+<header>
+    <h3>All rooms</h3>
+</header>
+<ul>
+    {% for room in rooms %}
+    <a href="/rooms/{{room.id}}">
+        <li class="member_class">
+            <p>
+                <span>{{room.name}}</span>
+            </p>
+            <p>
+                {{room.capacity}}
+            </p>
+            <div>
+                <p>Click for more</p>
+            </div>
+        </li>
+    </a>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

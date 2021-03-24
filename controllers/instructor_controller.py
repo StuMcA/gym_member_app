@@ -13,3 +13,9 @@ instructor_blueprint = Blueprint('instructor', __name__)
 def index():
     all_instructors = instructor_repository.select_all()
     return render_template('instructors/index.html', title="Instructors", instructors=all_instructors)
+
+@instructor_blueprint.route('/instructors/<id>')
+def instructor(id):
+    instructor = instructor_repository.select(id)
+    classes_found = instructor_repository.classes(instructor)
+    return render_template('/instructors/show.html', instructor=instructor, classes=classes_found)

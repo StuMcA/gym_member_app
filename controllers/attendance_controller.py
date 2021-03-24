@@ -44,5 +44,7 @@ def destroy(id):
 
     if return_to == "classes":
         return redirect(f'/classes/{gym_class_id}')
-    else:
+    elif return_to == "members":
         return redirect(f'/members/{member_id}')
+    else:
+        return redirect('/')

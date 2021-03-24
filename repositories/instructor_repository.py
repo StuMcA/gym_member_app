@@ -1,5 +1,7 @@
 from db.run_sql import run_sql
 from models.instructor import Instructor
+from models.gym_class import GymClass
+import repositories.location_repository as location_repository
 
 def save(instructor):
     sql = "INSERT INTO instructors (full_name) VALUES (%s) RETURNING id"
@@ -30,3 +32,24 @@ def select(id):
 def delete_all():
     sql = "DELETE FROM instructors"
     run_sql(sql)
+
+def classes(instructor):
+    classes_found = []
+
+    sql = "SELECT * FROM gym_classes WHERE instructor_id = %s"
+    values = [instructor.id]
+
+    results = run_sql(sql, values)
+    for row in results:
+        location = location_repository.select(row["location_id"])
+        class_found = GymClass(row["class_type"], 
+            instructor, 
+            row["class_date"], 
+            row["class_time"], 
+            row["duration"], 
+            location, 
+            row["id"]
+        )
+        classes_found.append(class_found)
+
+    return classes_found

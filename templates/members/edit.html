@@ -15,8 +15,8 @@
         <input type="date" name="date_of_birth" id="date_of_birth" value={{member.date_of_birth}} max="{{date}}">
         <label for="membership">Membership:</label>
         <select name="membership" id="membership">
-            <option value="Peak">Peak</option>
-            <option value="Off Peak">Off Peak</option>
+            <option value="Peak" {% if member.membership == "Peak" %}selected="true" {% endif %}>Peak</option>
+            <option value="Off Peak"{% if member.membership == "Off Peak" %}selected="true" {% endif %}>Off Peak</option>
         </select>
         <input type="submit" value="Save changes">
     </form>

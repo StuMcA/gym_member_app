@@ -12,6 +12,11 @@ main {
     /* padding: 10px; */
 }
 
+#gym_name {
+    max-width: 25%;
+    justify-content: center;
+}
+
 h1, h2, h3, h4 {
     /* font-family: 'Archivo Black', sans-serif; */
     font-family: 'Comfortaa', cursive;

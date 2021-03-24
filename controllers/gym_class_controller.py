@@ -1,5 +1,5 @@
 from flask import Flask, redirect, request, render_template, Blueprint, flash
-from datetime import date
+from datetime import date, time
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
 import repositories.instructor_repository as instructor_repository
@@ -25,6 +25,7 @@ def gym_class(id):
 
     number_attending = len(attendees)
     class_full = number_attending >= gym_class.location.capacity
+    class_peak = gym_class.time >= time(9, 00, 00) and gym_class.time <= time(17, 30, 00)
 
     members_not_attending = []
     for member in members:
@@ -37,7 +38,8 @@ def gym_class(id):
         members=members_not_attending, 
         attendees=attendees,
         class_full=class_full,
-        number_attending=number_attending
+        number_attending=number_attending,
+        class_peak=class_peak
     )
 
 @gym_class_blueprint.route('/classes/<id>/edit')

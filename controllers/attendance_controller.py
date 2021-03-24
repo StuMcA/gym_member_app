@@ -15,14 +15,11 @@ attendance_blueprint = Blueprint('attendance', __name__)
 def create():
     gym_class = gym_class_repository.select(request.form["class_id"])
     member = member_repository.select(request.form["member_id"])
-    if member.membership == "Off Peak" and gym_class.time >= time(9, 00, 00) and gym_class.time <= time(17, 30, 00):
-        flash("Member can't book peak time class with off peak membership")
-        return redirect(f'/classes/{gym_class.id}')
-    else:
-        attendance = Attendance(gym_class, member)
-        attendance_repository.save(attendance)
+    
+    attendance = Attendance(gym_class, member)
+    attendance_repository.save(attendance)
 
-        return redirect(f'/classes/{gym_class.id}')
+    return redirect(f'/classes/{gym_class.id}')
 
 @attendance_blueprint.route('/attendances/<id>/delete', methods=["POST"])
 def destroy(id):

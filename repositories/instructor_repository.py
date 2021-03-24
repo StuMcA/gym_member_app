@@ -24,14 +24,30 @@ def select(id):
     sql = "SELECT * FROM instructors WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)
+    # import pdb
+    # pdb.set_trace()
     if result is not None:
         instructor_found = Instructor(result[0]["full_name"], result[0]["id"])
 
     return instructor_found
 
+def update(instructor):
+    sql = """
+        UPDATE instructors
+        SET full_name = %s
+        WHERE id = %s
+    """
+    values = [instructor.name, instructor.id]
+    run_sql(sql, values)
+
 def delete_all():
     sql = "DELETE FROM instructors"
     run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM instructors WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 def classes(instructor):
     classes_found = []

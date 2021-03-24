@@ -3,12 +3,10 @@
 {% block content %}
 
 <a href="/classes/new" class="create_edit_cancel">Add a new class</a>
-<!-- <ul> -->
     {% for class in classes %}
         {% if class.date >= date %}
-            <a href="/classes/{{class.id}}" >
+            <a href="/classes/{{class.id}}" id="link_in_classes">
                 <div class="gym_class">
-                    <!-- <li> -->
                         <div class="class_type">
                             <p>
                                 <span>{{class.class_type}}</span>
@@ -24,7 +22,10 @@
                             </p>
                         </div>
                         <div class="class_instructor">
-                                <p href="/instructors/{class.instructor.id}" class="instructor_link">
+                            <!-- <a href=" href="/instructors/{class.instructor.id}"">
+
+                            </a> -->
+                                <p class="instructor_link">
                                     {{class.instructor.name}}
                                 </p>
                         </div>
@@ -46,12 +47,8 @@
                         <div class="click">
                             <p>Click for more</p>
                         </div>
-                        
-                    <!-- </li> -->
-                </div>
-                
+                </div>  
             </a>
         {% endif %}
     {% endfor %}
-<!-- </ul> -->
 {% endblock %}

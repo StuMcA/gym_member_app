@@ -303,3 +303,20 @@ article * {
 .member_class_list {
     width: 70%;
 }
+
+.instructor_link {
+    border: 1px solid transparent;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    padding: 0 5px;
+}
+
+.instructor_link p {
+    margin: 0;
+}
+
+.instructor_link:hover {
+    border: 1px solid black;
+    box-shadow: 2px 2px 0 #282828;
+}

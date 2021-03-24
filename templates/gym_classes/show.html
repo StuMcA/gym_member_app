@@ -11,9 +11,11 @@
     <a href="/classes/{{gym_class.id}}/edit" class="create_edit_cancel">Edit class details </a>
 
     <article>
-        <div>
-            <p class=larger>{{gym_class.instructor.name}}</p>
-        </div>
+        <a href="/instructors/{{gym_class.instructor.id}}" class="instructor_link">
+            <div>
+                <p class=larger>{{gym_class.instructor.name}}</p>
+            </div>
+        </a>
         <div>
             <p class="larger">{{gym_class.date[8:10]}}/{{gym_class.date[5:7]}}/{{gym_class.date[:4]}}</p>
             <p>{{gym_class.time.strftime("%H:%M")}}</p>

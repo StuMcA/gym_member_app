@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="/rooms/{{rooms.id}}/delete" method="POST" class="delete">
-        <input type="submit" value="Remove instructor">
+    <form action="/locations/{{location.id}}/delete" method="POST" class="delete">
+        <input type="submit" value="Delete room">
     </form>
     <header>
         <h3>Room details</h3>
     </header>
-    <a href="/rooms/{{room.id}}/edit" class="create_edit_cancel">Edit room details</a>
+    <a href="/locations/{{location.id}}/edit" class="create_edit_cancel">Edit room details</a>
     <article>
-        <p class="larger">{{room.name}}</p>
+        <p class="larger">{{location.name}}</p>
     </article>
 
     <header>

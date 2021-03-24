@@ -8,3 +8,8 @@ from models.gym_class import GymClass
 from models.member import Member
 
 instructor_blueprint = Blueprint('instructor', __name__)
+
+@instructor_blueprint.route('/instructors')
+def index():
+    all_instructors = instructor_repository.select_all()
+    return render_template('instructors/index.html', title="Instructors", instructors=all_instructors)

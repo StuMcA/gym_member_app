@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/instructors/new" class="create_edit_cancel">Add new instructor</a>
+
+<header>
+    <h3>All instructors</h3>
+</header>
+<ul>
+    {% for instructor in instructors %}
+    <a href="/instructors/{{instructor.id}}">
+        <li class="member_class">
+            <p>
+                <span>{{instructor.name}}</span>
+            </p>
+            <div>
+                <p>Click for more</p>
+            </div>
+        </li>
+    </a>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

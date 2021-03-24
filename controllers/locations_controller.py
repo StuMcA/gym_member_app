@@ -16,6 +16,19 @@ def location(id):
     classes_found = location_repository.classes(location)
     return render_template('/locations/show.html', location=location, classes=classes_found)
 
+@location_blueprint.route('/locations/new')
+def new_location():
+    return render_template('/locations/new.html', title="Add new room")
+
+@location_blueprint.route('/locations/create', methods=['POST'])
+def create_location():
+    location = Location(
+        request.form['room_name'],
+        request.form['capacity']
+    )
+    location_repository.save(location)
+    return redirect('/locations')
+
 @location_blueprint.route('/locations/<id>/edit')
 def edit_location(id):
     location_found = location_repository.select(id)

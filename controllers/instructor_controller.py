@@ -15,6 +15,19 @@ def instructor(id):
     classes_found = instructor_repository.classes(instructor)
     return render_template('/instructors/show.html', instructor=instructor, classes=classes_found)
 
+@instructor_blueprint.route('/instructors/new')
+def new_instructor():
+    return render_template('/instructors/new.html', title="Add new instructor")
+
+
+@instructor_blueprint.route('/instructors/create', methods=['POST'])
+def create_instructor():
+    instructor = Instructor(
+        request.form['full_name']
+    )
+    instructor_repository.save(instructor)
+    return redirect('/instructors')
+
 @instructor_blueprint.route('/instructors/<id>/edit')
 def edit_instructor(id):
     instructor_found = instructor_repository.select(id)

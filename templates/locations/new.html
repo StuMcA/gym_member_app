@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="/locations" class="create_edit_cancel">Cancel</a>
+    <header>
+        <h3>Add a new location here</h3>
+    </header>
+
+    <form action="/locations/create" method="POST">
+        <label for="room_name">Room name: </label>
+        <input type="text" id="room_name" name="room_name">
+        <label for="capacity">Capacity: </label>
+        <input type="number" id="capacity" name="capacity" min="0">
+        <input type="submit">
+    </form>
+
+{% endblock %}

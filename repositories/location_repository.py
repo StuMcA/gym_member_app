@@ -33,6 +33,15 @@ def select(id):
         location = Location(result["room_name"], result["capacity"], id)
     return location
 
+def update(location):
+    sql = """
+        UPDATE locations
+        SET (room_name, capacity) = (%s, %s)
+        WHERE id = %s
+    """
+    values = [location.name, location.capacity, location.id]
+    run_sql(sql, values)
+
 def delete(id):
     sql = "DELETE FROM locations WHERE id = %s"
     values = [id]

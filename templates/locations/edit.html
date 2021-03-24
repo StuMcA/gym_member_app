@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="/locations/{{location.id}}" class="create_edit_cancel">Cancel</a>
+    <header>
+        <h3>Update room details:</h3>
+    </header>
+
+    <form action="/locations/{{location.id}}" method="POST">
+        <label for="room_name">Room name:</label>
+        <input type="text" name="new_name" id="room_name" value={{location.name}}>
+        <label for="capacity">Last name:</label>
+        <input type="number" name="capacity" id="capacity" value={{location.capacity}} min="0">
+        <input type="submit" value="Save changes">
+    </form>
+
+{% endblock %}

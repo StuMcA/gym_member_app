@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="/instructors" class="create_edit_cancel">Cancel</a>
+    <header>
+        <h3>Add a new instructor here</h3>
+    </header>
+
+    <form action="/instructors/create" method="POST">
+        <label for="full_name">Instructor name: </label>
+        <input type="text" id="full_name" name="full_name">
+        <input type="submit">
+    </form>
+
+{% endblock %}

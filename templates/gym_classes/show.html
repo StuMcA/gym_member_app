@@ -22,11 +22,13 @@
             <p>{{gym_class.duration}} mins</p>
         </div>
 
-        <div>
-            <p class=larger>{{gym_class.location.name}}</p>
-            <p>Booked: {{number_attending}}</p>
-            <p>Capacity: {{gym_class.location.capacity}}</p>
-        </div>
+        <a href="/locations/{{gym_class.location.id}}" class="instructor_link">
+            <div>
+                <p class=larger>{{gym_class.location.name}}</p>
+                <p>Booked: {{number_attending}}</p>
+                <p>Capacity: {{gym_class.location.capacity}}</p>
+            </div>
+        </a>
     
     </article>
     

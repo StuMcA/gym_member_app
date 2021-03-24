@@ -39,6 +39,7 @@ li {
     margin: auto 5px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
@@ -63,7 +64,7 @@ li {
 }
 
 .logo {
-    /* margin-right: auto; */
+    margin: auto 30px auto 0;
 }
 
 .flash {

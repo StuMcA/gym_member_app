@@ -2,6 +2,7 @@
 
 {% block content %}
     <form action="/classes/{{gym_class.id}}/delete" method="POST" class="delete">
+        <input type="hidden" name="return_to" value="classes">
         <input type="submit" value="Delete class">
     </form>
     <p class="flash">{{get_flashed_messages()[0]}}</p>

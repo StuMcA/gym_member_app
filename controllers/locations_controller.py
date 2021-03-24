@@ -36,7 +36,7 @@ def edit_location(id):
 
 @location_blueprint.route('/locations/<id>', methods=['POST'])
 def update_location(id):
-    location = Location(request.form["new_name"], id)
+    location = Location(request.form["new_name"], request.form["capacity"], id)
     location_repository.update(location)
     return redirect(f'/locations/{id}')
 

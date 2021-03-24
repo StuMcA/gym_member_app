@@ -12,7 +12,7 @@
     <label for="instructor">Instructor: </label>
     <select name="instructor" id="instructor">
         {% for instructor in instructors %}
-            <option value="{{instructor.id}}">{{instructor.name}}</option>
+            <option value="{{instructor.id}}" {% if instructor.name == gym_class.instructor.name %} selected="true" {% endif %}>{{instructor.name}}</option>
         {% endfor %}
     </select>
     <label for="date">Date: </label>
@@ -24,7 +24,7 @@
     <label for="location">Location: </label>
     <select name="location" id="location">
         {% for location in locations %}
-        <option value="{{location.id}}">{{location.name}}</option>
+        <option value="{{location.id}}" {% if location.name == gym_class.location.name %} selected="true" {% endif %}>{{location.name}}</option>
         {% endfor %}
     </select>
     <input type="submit">
